@@ -2,7 +2,23 @@
     $nomeProduto = $_POST['inpProduto'];
     $descProduto = $_POST['inpDescricao'];
     $valor = $_POST['inpValor'];
-    $foto = $_FILES['inpImagem']['name'];
+    $foto = 'fotos/'. $_FILES['inpImagem']['name'];
+
+    	
+	if($_POST){
+
+		if($_FILES['inpImagem']){
+			if($_FILES['inpImagem']['error'] == 0){
+				//salvando a foto de forma descente
+				move_uploaded_file($_FILES['inpImagem']['tmp_name'],'./fotos/'.$_FILES['inpImagem']['name']);
+				
+				$arquivo_def = './fotos/'.$_FILES['inpImagem']['name'];
+			}else {
+				$erros[] = 'errUpload';
+			}
+		}
+
+	}
 
     $conexao = mysqli_connect ("localhost", "root", "", "desafiodh");
     

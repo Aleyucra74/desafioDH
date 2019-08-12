@@ -1,29 +1,29 @@
 <?php
     include('./inc/functions.php');
 	
-	if($_POST){
+	 if($_POST){
 		
-		// Verificando o post
-		$erros = errosNoPost();
+	// 	// Verificando o post
+	 	$erros = errosNoPost();
 
-		if($_FILES['inpImagem']){
-			if($_FILES['inpImagem']['error'] == 0){
-				//salvando a foto de forma descente
-				move_uploaded_file($_FILES['inpImagem']['tmp_name'],'./fotos/'.$_FILES['inpImagem']['name']);
+	// 	if($_FILES['inpImagem']){
+	// 		if($_FILES['inpImagem']['error'] == 0){
+	// 			//salvando a foto de forma descente
+	// 			move_uploaded_file($_FILES['inpImagem']['tmp_name'],'./fotos/'.$_FILES['inpImagem']['name']);
 				
-				$arquivo_def = './fotos/'.$_FILES['inpImagem']['name'];
-			}else {
-				$erros[] = 'errUpload';
-			}
-		}
+	// 			$arquivo_def = './fotos/'.$_FILES['inpImagem']['name'];
+	// 		}else {
+	// 			$erros[] = 'errUpload';
+	// 		}
+	// 	}
 
-	} else {
+	 } else {
 
-		// Garantindo que um vetor de erros exista
-		// ainda que vazio quando não houver POST
-		$erros = [];
+	// 	// Garantindo que um vetor de erros exista
+	// 	// ainda que vazio quando não houver POST
+	 	$erros = [];
 
-	}
+	 }
 
 	// errNome será true se o campo nome for inválido e false se o campo estiver ok. 
 	$errNome = in_array('errNome',$erros);
