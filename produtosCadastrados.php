@@ -25,7 +25,7 @@ while ($lista = mysqli_fetch_assoc($resultado)){ ?>
             <td width="100"> <?php echo $lista["Nome_Produto"] ?> </td>
             <td width="100"> <?php echo $lista["Preco"] ?> </td>
             <td width="100"> <?php echo $lista["Descricao_Produto"] ?> </td>
-            <td width="100"> <img src="<?php echo $lista['foto'] ?>" alt="seraqvai"> </td>
+            <td width="100"> <img src="<?php echo $lista['url_foto'] ?>" alt="seraqvai" style="width:50px;border-radius:5px;object-fit:cover;"> </td>
             
         </tr>
     </table>

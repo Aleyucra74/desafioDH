@@ -23,7 +23,7 @@
     $conexao = mysqli_connect ("localhost", "root", "", "desafiodh");
     
     function insereValores($conexao, $nomeProduto, $valor, $descProduto, $foto){
-        $query = "insert into cadastroprodutos (Nome_Produto, Preco, Descricao_Produto, foto) values ('{$nomeProduto}', '{$valor}', '{$descProduto}', '{$foto}')";
+        $query = "insert into cadastroprodutos (Nome_Produto, Preco, Descricao_Produto, url_foto) values ('{$nomeProduto}', '{$valor}', '{$descProduto}', '{$foto}')";
         
         return mysqli_query($conexao, $query);
     }
