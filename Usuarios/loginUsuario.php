@@ -1,39 +1,43 @@
 <?php
 
 $conexao = mysqli_connect ("localhost", "root", "", "desafiodh");
-$resultado = mysqli_query($conexao, "select * from cadastrousuarios where Email_Usuario = " . $_POST['inpEmail'] . " and Senha_Usuario = " . $_POST['inpSenha']);
-$lista = mysqli_fetch_assoc($resultado);
 //  $email = $_POST['inpEmail'];
 //  $senha = $_POST['inpSenha'];
 // $conf = $_POST['inpConf'];
 
-    if($_POST){
-        $loginOk = logar($_POST['inpEmail'],$_POST['inpSenha']);
-        if($loginOk){
+if($_POST){
+    $loginOk = logar($_POST['inpEmail'],$_POST['inpSenha']);
+    if($loginOk){
         
-            //criando a session
-            session_start();
-            $_SESSION['logado'] = true;
+        //criando a session
+        session_start();
+        $_SESSION['logado'] = true;
+        
+        //redireciomento 
+        header('location:index.php');
+    } 
+} else {
+    $loginOk = true;
+}
 
-            //redireciomento 
-            header('location:index.php');
-        } 
-    } else {
-        $loginOk = true;
-    }
+function logar($email,$senha){
+    global $conexao;
+    $resultado = mysqli_query($conexao, "select * from cadastrousuarios where Email_Usuario = '{$_POST['inpEmail']}' and Senha_Usuario = '{$_POST['inpSenha']}'");
+    $lista = mysqli_fetch_assoc($resultado);
 
-    function logar($email,$senha){
-        $achou = false;
-         if($email == $lista["Email_Usuario"]){
-             $achou = true;
-         }
+    var_dump($lista);
+
+        // $achou = false;
+        //  if($email == $lista["Email_Usuario"]){
+        //      $achou = true;
+        //  }
  
-         if(!$achou){
-             return false;
-         }else {
-             $senhaok = password_verify($senha,$lista["Senha_Usuario"]);
-             return $senhaok;
-         }
+        //  if(!$achou){
+        //      return false;
+        //  }else {
+        //      $senhaok = password_verify($senha,$lista["Senha_Usuario"]);
+        //      return $senhaok;
+        //  }
         
      }
 ?>

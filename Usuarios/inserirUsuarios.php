@@ -1,7 +1,7 @@
 <?php
     $usuario = $_POST["inpNomeUsuario"];
     $email = $_POST["inpEmail"];
-    $senha = password_hash($_POST["inpSenha"],PASSWORD_DEFAULT);
+    $senha = sha1($_POST["inpSenha"]);
     $conf = $_POST["inpConf"];
 
     $conexao = mysqli_connect ("localhost", "root", "", "desafiodh");
