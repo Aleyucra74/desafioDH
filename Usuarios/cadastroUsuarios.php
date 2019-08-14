@@ -7,7 +7,6 @@ if ($conexao){
     }
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -28,22 +27,22 @@ if ($conexao){
     <form action="inserirUsuarios.php" method="post">
         <div class="form-group ">
             <label>Nome do usuario:<sup>*</sup></label>
-            <input type="text" name="inpNomeUsuario" class="form-control" value="" required>
+            <input type="text" name="inpNomeUsuario" class="form-control " value="" required>
             <span class="help-block"></span>
         </div>
         <div class="form-group ">
             <label>Email do usuairo:<sup>*</sup></label>
-            <input type="email" name="inpEmail" class="form-control" value="" required>
+            <input type="email" name="inpEmail" class="form-control " value="" required>
             <span class="help-block"></span>
         </div>
         <div class="form-group ">
             <label>Senha:<sup>*</sup></label>
-            <input type="password" name="inpSenha" class="form-control" value="" required>
+            <input type="password" name="inpSenha" class="form-control " value="" required>
             <span class="help-block"></span>
         </div>
         <div class="form-group ">
             <label>Confirmacao da senha:<sup>*</sup></label>
-            <input type="password" name="inpConf" class="form-control" value="">
+            <input type="password" name="inpConf" class="form-control " value="" required>
             <span class="help-block"></span>
         </div>
         <div class="form-group">
