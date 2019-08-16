@@ -4,6 +4,7 @@ $conexao = mysqli_connect ("localhost", "root", "", "desafiodh");
 //  $email = $_POST['inpEmail'];
 //  $senha = $_POST['inpSenha'];
 // $conf = $_POST['inpConf'];
+$senhausuario = sha1($_POST['inpSenha']);
 
 if($_POST){
     $loginOk = logar($_POST['inpEmail'],$_POST['inpSenha']);
@@ -21,11 +22,17 @@ if($_POST){
 }
 
 function logar($email,$senha){
+    global $senhausuario;
     global $conexao;
-    $resultado = mysqli_query($conexao, "select * from cadastrousuarios where Email_Usuario = '{$_POST['inpEmail']}' and Senha_Usuario = '{$_POST['inpSenha']}'");
+     $sql = "select * from cadastrousuarios where Email_Usuario = '$_POST[inpEmail]' and Senha_Usuario = '$senhausuario'";
+     die($sql);
+    //$resultado = mysqli_query($conexao, "select * from cadastrousuarios where Email_Usuario = '{$_POST['inpEmail']}' and Senha_Usuario = '{sha1($_POST['inpSenha']}'");
     $lista = mysqli_fetch_assoc($resultado);
 
     var_dump($lista);
+    if ($lista == true) {
+
+    }
 
         // $achou = false;
         //  if($email == $lista["Email_Usuario"]){
