@@ -5,9 +5,12 @@ $conexao = mysqli_connect ("localhost", "root", "", "desafiodh");
 //  $senha = $_POST['inpSenha'];
 // $conf = $_POST['inpConf'];
 $senhausuario = sha1($_POST['inpSenha']);
+$emailusuario = $_POST['inpEmail'];
 
 if($_POST){
-    $loginOk = logar($_POST['inpEmail'],$_POST['inpSenha']);
+    global $emailusuario;
+    global $senhausuario;
+    $loginOk = logar($emailusuario,$senhausuario);
     if($loginOk){
         
         //criando a session
@@ -22,17 +25,18 @@ if($_POST){
 }
 
 function logar($email,$senha){
-    global $senhausuario;
-    global $conexao;
-     $sql = "select * from cadastrousuarios where Email_Usuario = '$_POST[inpEmail]' and Senha_Usuario = '$senhausuario'";
-     die($sql);
-    //$resultado = mysqli_query($conexao, "select * from cadastrousuarios where Email_Usuario = '{$_POST['inpEmail']}' and Senha_Usuario = '{sha1($_POST['inpSenha']}'");
-    $lista = mysqli_fetch_assoc($resultado);
+        global $conexao;
+        // $sql = "select * from cadastrousuarios where Email_Usuario = '$email' and Senha_Usuario = '$senha'";
+        //  die($sql);
+        $resultado = mysqli_query($conexao, "select * from cadastrousuarios where Email_Usuario = '$email' and Senha_Usuario = '$senha'");
+        $lista = mysqli_fetch_assoc($resultado);
 
-    var_dump($lista);
-    if ($lista == true) {
-
-    }
+        var_dump($lista);
+        if ($lista) {
+            //atualizar a tabela do BD cadastrousuarios $$senha para tamanho 100
+        }else{
+            echo "usuario ou senha incorreta";
+        }
 
         // $achou = false;
         //  if($email == $lista["Email_Usuario"]){
