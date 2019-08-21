@@ -11,15 +11,17 @@ if($_POST){
     global $emailusuario;
     global $senhausuario;
     $loginOk = logar($emailusuario,$senhausuario);
-    if($loginOk){
-        
-        //criando a session
-        session_start();
-        $_SESSION['logado'] = true;
-        
-        //redireciomento 
-        header('location:index.php');
-    } 
+    if($ok){
+        if($loginOk){
+            
+            //criando a session
+            session_start();
+            $_SESSION['logado'] = true;
+            
+            //redireciomento 
+            header('location:index.php');
+        } 
+    }
 } else {
     $loginOk = true;
 }
@@ -34,6 +36,9 @@ function logar($email,$senha){
         var_dump($lista);
         if ($lista) {
             //atualizar a tabela do BD cadastrousuarios $$senha para tamanho 100
+            if($email == $lista['Email_Usuario'] && $senha == $lista['Senha_Usuario']){
+                $ok = true;
+            }
         }else{
             echo "usuario ou senha incorreta";
         }
